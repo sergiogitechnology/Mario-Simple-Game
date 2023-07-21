@@ -1,6 +1,7 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
-
+const reloadButton = document.getElementById('reloadButton');
+reloadButton.style.display = 'none';
 const jump = () => {
     mario.classList.add('jump');
 
@@ -10,9 +11,6 @@ const jump = () => {
 }
 
 const loop = setInterval(() => {
-
-    console.log('loop')
-
     const pipePosition = pipe.offsetLeft;
     const marioPosition = parseInt(window.getComputedStyle(mario).bottom, 10);
 
@@ -28,9 +26,13 @@ const loop = setInterval(() => {
         mario.style.width = '75px'
         mario.style.marginLeft + '50px'
 
-        classInterval(loop);
-
+        const reloadButton = document.getElementById('reloadButton');
+        reloadButton.style.display = "block";
     }
 },10); 
 
 document.addEventListener('keydown', jump);
+
+reloadButton.addEventListener('click', function() {
+  location.reload();
+});
